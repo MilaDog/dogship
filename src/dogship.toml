@@ -78,17 +78,8 @@ console_title_template = "{{ .Shell }} in {{ .Folder }}"
     style = "diamond"
     background = "transparent"
     template = "\ueabc "
-    foreground_templates = [
-      "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}#f8f8f2{{end}}",
-    ]
+    foregrounds = "#f8f8f2"
+    
     [blocks.segments.properties]
       always_enabled = true
 
-[transient_prompt]
-  foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}#f8f8f2{{end}}",
-  ]
-  background = "transparent"
-  template = "\ueabc "
