@@ -10,10 +10,16 @@ console_title_template = "{{ .Shell }} in {{ .Folder }}"
   newline = true
 
   [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground = "#f8f8f2"
+    template = "\u256d\u2500\ueabc"
+
+  [[blocks.segments]]
     type = "session"
     style = "plain"
     foreground = "lightYellow"
-    template = "{{ .UserName }} "
+    template = " {{ .UserName }} "
 
   [[blocks.segments]]
     type = "path"
@@ -60,21 +66,29 @@ console_title_template = "{{ .Shell }} in {{ .Folder }}"
   type = "prompt"
   alignment = "left"
   newline = true
-
+  
   [[blocks.segments]]
     type = "text"
     style = "plain"
+    foreground = "#f8f8f2"
+    template = "\u2570"
+
+  [[blocks.segments]]
+    type = "text"
+    style = "diamond"
     background = "transparent"
-    template = "❯"
+    template = "\ueabc "
     foreground_templates = [
       "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}#ff94df{{end}}",
+      "{{if eq .Code 0}}#f8f8f2{{end}}",
     ]
+    [blocks.segments.properties]
+      always_enabled = true
 
 [transient_prompt]
   foreground_templates = [
     "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}#ff94df{{end}}",
+    "{{if eq .Code 0}}#f8f8f2{{end}}",
   ]
   background = "transparent"
-  template = "❯ "
+  template = "\ueabc "
