@@ -1,0 +1,80 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+console_title_template = "{{ .Shell }} in {{ .Folder }}"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  [[blocks.segments]]
+    type = "session"
+    style = "plain"
+    foreground = "lightYellow"
+    template = "{{ .UserName }} "
+
+  [[blocks.segments]]
+    type = "path"
+    style = "plain"
+    foreground = "cyan"
+    template = "<#ffffff>in</> {{ .Path }} "
+
+    [blocks.segments.properties]
+      style = "folder"
+
+  [[blocks.segments]]
+    type = "git"
+    style = "plain"
+    foreground = "#ff94df"
+    template = "<#ffffff>on</> {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <#6c6c6c>{{if gt .Behind 0}}⇣{{end}}{{if gt .Ahead 0}}⇡{{end}}</>"
+
+    [blocks.segments.properties]
+      branch_icon = " <#ff94df> </>"
+      fetch_status = true
+      commit_icon = "@"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "right"
+
+  [[blocks.segments]]
+    type= "project"
+    style = "plain"
+    background = "transparent"
+    foreground = "#ffffff"
+    template = "{{if eq \"python\" .Type}}<lightGreen>\ue73c</>{{end}} {{if .Name}}{{.Name}}{{end}} {{if .Version}}{{.Version}}{{end}} <cyan><b>|</></> "
+
+  [[blocks.segments]]
+    type = "time"
+    style = "plain"
+    foreground = "#ffffff"
+    background = "transparent"
+    template = "{{ .CurrentDate | date .Format }}"
+
+    [blocks.segments.properties]
+      time_format = "January 02, 2006, 15:04"
+
+[[blocks]]
+  type = "prompt"
+  alignment = "left"
+  newline = true
+
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    background = "transparent"
+    template = "❯"
+    foreground_templates = [
+      "{{if gt .Code 0}}red{{end}}",
+      "{{if eq .Code 0}}#ff94df{{end}}",
+    ]
+
+[transient_prompt]
+  foreground_templates = [
+    "{{if gt .Code 0}}red{{end}}",
+    "{{if eq .Code 0}}#ff94df{{end}}",
+  ]
+  background = "transparent"
+  template = "❯ "
