@@ -2,7 +2,7 @@
 
 version = 2
 final_space = true
-console_title_template = "{{ .Shell }} in {{ .Folder }}"
+console_title_template = "{{ .Shell }} in {{ .Folder }} | {{.Code}}"
 
 [[blocks]]
   type = "prompt"
@@ -50,7 +50,7 @@ console_title_template = "{{ .Shell }} in {{ .Folder }}"
     style = "plain"
     background = "transparent"
     foreground = "#ffffff"
-    template = "{{if eq \"python\" .Type}}<lightGreen>\ue73c</>{{end}} {{if .Name}}{{.Name}}{{end}} {{if .Version}}{{.Version}}{{end}} <cyan><b>|</></> "
+    template = "{{if eq \"python\" .Type}}<lightGreen> </>{{end}} {{if .Name}}{{.Name}}{{end}} {{if .Version}}{{.Version}}{{end}} <cyan><b>|</></> "
 
   [[blocks.segments]]
     type = "time"
@@ -71,14 +71,7 @@ console_title_template = "{{ .Shell }} in {{ .Folder }}"
     type = "text"
     style = "plain"
     foreground = "#f8f8f2"
-    template = "\u2570"
-
-  [[blocks.segments]]
-    type = "text"
-    style = "diamond"
-    background = "transparent"
-    template = "\ueabc "
-    foregrounds = "#f8f8f2"
+    template = "\u2570\ueabc "
     
     [blocks.segments.properties]
       always_enabled = true
